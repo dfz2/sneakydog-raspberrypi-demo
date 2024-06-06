@@ -1,6 +1,6 @@
 """Example of adding tasks on app startup."""
 
-from flask_raspberrypi_demo import scheduler
+from sneakydog_raspberrypi_demo import scheduler
 
 
 @scheduler.task(

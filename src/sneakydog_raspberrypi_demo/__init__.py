@@ -1,7 +1,7 @@
 from flask import Flask
 
 from flask_apscheduler import APScheduler
-from flask_raspberrypi_demo.settings import DevelopmentConfig
+from sneakydog_raspberrypi_demo.settings import DevelopmentConfig
 
 
 scheduler = APScheduler()
