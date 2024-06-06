@@ -15,6 +15,8 @@ def task1():
     """
     print("running task 1!")  # noqa: T001
 
+    # time snap
+
     # oh, do you need something from config?
     with scheduler.app.app_context():
         print(scheduler.app.config)  # noqa: T001
