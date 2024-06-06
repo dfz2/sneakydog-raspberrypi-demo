@@ -1,0 +1,16 @@
+[project]
+name = "flask_raspberrypi_demo"
+version = "2024.6.6"
+authors = [{ name = "dfz", email = "testxx@yeah.net" }]
+description = "flask_raspberrypi_demo"
+requires-python = ">=3.10"
+dependencies = [
+    "Flask>=3.0.3",
+    "Flask-APScheduler>=1.13.1",
+    "python-dotenv>=1.0.1",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
