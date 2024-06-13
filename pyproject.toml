@@ -1,6 +1,13 @@
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+
 [project]
 name = "sneakydog_raspberrypi_demo"
-version = "2024.6.6"
+version = "2024.6.13"
 authors = [{ name = "dfz", email = "sneakydog@yeah.net" }]
 description = "sneakydog_raspberrypi_demo"
 requires-python = ">=3.10"
@@ -10,6 +17,7 @@ dependencies = [
     "python-dotenv>=1.0.1",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+
+[project.optional-dependencies]
+build = ["build"]
+
