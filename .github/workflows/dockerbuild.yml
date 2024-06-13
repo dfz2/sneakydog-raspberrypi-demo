@@ -14,7 +14,7 @@ jobs:
       
       - name: Python build
         run: |
-          cd sneakydog-raspberrypi-demo
+          cd ./sneakydog-raspberrypi-demo
           pip install -r requirements.txt
           pip install build
           python -m build
