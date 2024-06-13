@@ -11,6 +11,8 @@ jobs:
 
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+        with:
+          path: ./sneakydog-raspberrypi-demo
       
       - name: Python build
         run: |
@@ -29,9 +31,9 @@ jobs:
           username: ${{ secrets.DOCKER_NAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
   
-      # - name: Push Docker image
-      #   uses: ddocker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: sneakydogs/sneakydog_raspberrypi_demo:latest
+      - name: Push Docker image
+        uses: ddocker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: sneakydogs/sneakydog_raspberrypi_demo:latest
