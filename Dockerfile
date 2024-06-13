@@ -6,7 +6,6 @@ WORKDIR /usr/local/app
 COPY . .
 
 # Install the application dependencies
-COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install build
 RUN python -m build
