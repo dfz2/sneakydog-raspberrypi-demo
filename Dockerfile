@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM --platform=arm64 python:3.12
 
 WORKDIR /usr/local/app
 
@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src ./src
 
 RUN pip install build
-RUN python -m build
+RUN python3 -m build
 RUN pip install ./dist/*.whl
 
 
