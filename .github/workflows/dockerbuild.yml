@@ -11,6 +11,13 @@ jobs:
 
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+      
+      - name: Python build
+        run: |
+          cd sneakydog-raspberrypi-demo
+          pip install -r requirements.txt
+          pip install build
+          python -m build
 
       - name: Build the Docker Image 🔧
         run: |
@@ -22,8 +29,9 @@ jobs:
           username: ${{ secrets.DOCKER_NAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
   
-      - name: Push Docker image
-        uses: ddocker/build-push-action@v5
-        with:
-          push: true
-          tags: sneakydogs/sneakydog_raspberrypi_demo:latest
+      # - name: Push Docker image
+      #   uses: ddocker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: sneakydogs/sneakydog_raspberrypi_demo:latest
