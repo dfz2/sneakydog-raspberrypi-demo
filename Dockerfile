@@ -2,14 +2,15 @@ FROM --platform=arm64 python:3.12
 
 WORKDIR /usr/local/app
 
+# Copy in the source code
+COPY . .
+
 # Install the application dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy in the source code
-COPY dist/*.whl ./app.whl
-
-RUN pip install ./app.whl
+RUN pip install build
+RUN python -m build
+RUN pip install ./dist/*.whl
 
 EXPOSE 5000
 
