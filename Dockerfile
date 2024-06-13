@@ -1,15 +1,15 @@
-FROM --platform=arm64 python:3.12
+FROM python:3.12
 
 WORKDIR /usr/local/app
 
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src ./src
 
-RUN pip3 install build
-RUN python3 -m build
-RUN pip3 install ./dist/*.whl
+RUN pip install build
+RUN python -m build
+RUN pip install ./dist/*.whl
 
 
 EXPOSE 5000
