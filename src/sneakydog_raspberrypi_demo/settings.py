@@ -16,7 +16,7 @@ class DevelopmentConfig(Config):
     JOBS = [
         {
             "id": "job1111",
-            "func": "flask_raspberrypi_demo.tasks:task2",
+            "func": "sneakydog_raspberrypi_demo.tasks:task2",
             "trigger": "interval",
             "seconds": 2,
         }

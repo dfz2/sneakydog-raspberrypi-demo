@@ -14,3 +14,4 @@ def create_app() -> Flask:
     scheduler.init_app(app)
     scheduler.start()
     return app
+
