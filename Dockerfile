@@ -3,6 +3,7 @@ FROM --platform=arm64 python:slim
 WORKDIR /usr/src/app
 
 COPY src ./src
+COPY .env ./
 COPY pyproject.toml ./
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
