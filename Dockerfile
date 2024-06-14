@@ -1,22 +1,22 @@
 FROM --platform=arm64 python:3
 
-WORKDIR /usr/src/app
+# Setup an app user so the container doesn't run as the root user
+RUN useradd appuser
+USER appuser
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /usr/src/app
 
 COPY src ./src
 COPY pyproject.toml ./
 
-RUN pip install build
-RUN python -m build
-RUN pip install ./dist/*.whl
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# RUN pip install build
+# RUN python -m build
+# RUN pip install ./dist/*.whl
 
 EXPOSE 5000
-
-# Setup an app user so the container doesn't run as the root user
-RUN useradd appuser
-USER appuser
 
 ENV FLASK_APP="sneakydog_raspberrypi_demo"
 ENV FLASK_PORT=5000
