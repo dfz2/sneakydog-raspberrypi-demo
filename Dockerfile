@@ -1,4 +1,4 @@
-FROM --platform=arm64 arm64v8/python:3
+FROM --platform=arm64 python:3
 
 WORKDIR /usr/src/app
 

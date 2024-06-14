@@ -30,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: sneakydogs/sneakydog_raspberrypi_demo:2024.06.13
+          tags: sneakydogs/sneakydog_raspberrypi_demo:latest
