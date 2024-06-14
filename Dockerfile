@@ -4,7 +4,7 @@ FROM --platform=arm64 python:3
 RUN useradd appuser
 USER appuser
 
-WORKDIR /usr/src/app
+WORKDIR /home/appuser
 
 COPY src ./src
 COPY pyproject.toml ./
