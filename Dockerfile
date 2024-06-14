@@ -1,4 +1,4 @@
-FROM --platform=arm64 python:3
+FROM --platform=arm64 python:slim
 
 # Setup an app user so the container doesn't run as the root user
 RUN useradd appuser
