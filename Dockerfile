@@ -12,9 +12,9 @@ COPY pyproject.toml ./
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# RUN pip install build
-# RUN python -m build
-# RUN pip install ./dist/*.whl
+RUN pip install build
+RUN python -m build
+RUN pip install ./dist/*.whl
 
 EXPOSE 5000
 
