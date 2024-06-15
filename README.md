@@ -5,7 +5,7 @@ package whl
 python -m build
 ```
 
-config.txt settings
+picamera config.txt settings
 ```
 camera_auto_detect=0
 gpu_mem=128
