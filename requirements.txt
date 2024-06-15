@@ -1,3 +1,5 @@
 Flask
 Flask-APScheduler
 python-dotenv
+numpy
+picamera2

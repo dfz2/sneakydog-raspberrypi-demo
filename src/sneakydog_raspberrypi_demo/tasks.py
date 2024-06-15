@@ -13,11 +13,11 @@ except:
 
 
 
-@scheduler.task(
-    "interval",
-    id="job_sync",
-    seconds=1,
-)
+#@scheduler.task(
+#    "interval",
+#    id="job_sync",
+#    seconds=1,
+#)
 def task1():
     """Sample task 1.
 
@@ -49,6 +49,16 @@ def task2():
         filename = os.path.join(file_path, f"{get_current_datetime()}.jpg")
 
         with Picamera2() as picam2:
+        
+            #picam2 = Picamera2()
             config = picam2.create_still_configuration()
             picam2.configure(config)
+            picam2.start()
+        
             picam2.capture_file(filename)
+
+            #picam2.stop()
+
+
+
+

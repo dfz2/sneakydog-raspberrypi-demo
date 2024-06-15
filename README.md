@@ -17,5 +17,15 @@ dtoverlay=imx219,cam1
 
 APT Install picamera2
 ```
-sudo apt install -y python3-picamera2 --no-install-recommends
+
+sudo apt install -y python3-libcamera python3-kms++
+sudo apt install -y python3-prctl libatlas-base-dev ffmpeg libopenjp2-7 python3-pip
+pip install numpy --upgrade
+pip install picamera2
+
+
+python -m venv --system-site-packages .venv
+source .venv/bin/activate
+
+
 ```
