@@ -14,8 +14,7 @@ dtoverlay=imx219,cam1
 ```
 
 
-
-APT Install picamera2
+Install picamera2
 ```
 
 sudo apt install -y python3-libcamera python3-kms++
