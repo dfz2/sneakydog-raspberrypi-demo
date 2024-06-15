@@ -12,6 +12,7 @@ class Config:
 class DevelopmentConfig(Config):
     """Dev config."""
 
+    FILE_SAVE_PATH = "/home/pi"
     DEBUG = False
     JOBS = [
         {
