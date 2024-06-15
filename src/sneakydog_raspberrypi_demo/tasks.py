@@ -42,8 +42,7 @@ def task2():
     with scheduler.app.app_context():
         file_save_path = scheduler.app.config["FILE_SAVE_PATH"]
 
-        current_day = get_current_date()
-        file_path = os.path.join(file_save_path, current_day)
+        file_path = os.path.join(file_save_path, get_current_date())
         if not os.path.exists(file_path):
             os.makedirs(file_path)
 
