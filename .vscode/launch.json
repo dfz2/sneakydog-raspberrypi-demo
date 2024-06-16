@@ -10,7 +10,7 @@
       "request": "launch",
       "module": "flask",
       "env": {
-        "FLASK_APP": "flask_raspberrypi_demo",
+        "FLASK_APP": "sneakydog_raspberrypi_demo",
         "FLASK_DEBUG": "0"
       },
       "args": [

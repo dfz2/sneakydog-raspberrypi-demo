@@ -1,64 +1,34 @@
 """Example of adding tasks on app startup."""
 
-from sneakydog_raspberrypi_demo import scheduler
-from sneakydog_raspberrypi_demo.util import get_current_date, get_current_datetime
-from datetime import datetime
 import os
 
+from sneakydog_raspberrypi_demo import scheduler
+from sneakydog_raspberrypi_demo.util import get_current_date
+from sneakydog_raspberrypi_demo.util import get_current_datetime
+
+picamera2Load = True
 
 try:
     from picamera2 import Picamera2  # type: ignore
-except:
-    None
+except:  # noqa E722
+    picamera2Load = False
+    print("picamera2 import fail")
 
 
+def task2() -> None:
+    """_summary_"""
 
-#@scheduler.task(
-#    "interval",
-#    id="job_sync",
-#    seconds=1,
-#)
-def task1():
-    """Sample task 1.
-
-    Added when app starts.
-    """
-    print("running task 1!")  # noqa: T001
-
-    # time snap
-
-    # oh, do you need something from config?
-    with scheduler.app.app_context():
-        print(scheduler.app.config)  # noqa: T001
-
-
-def task2():
-    """Sample task 2.
-
-    Added when /add url is visited.
-    """
-    print("start task 2!")  # noqa: T001
-
+    print("test....")
     with scheduler.app.app_context():
         file_save_path = scheduler.app.config["FILE_SAVE_PATH"]
-
         file_path = os.path.join(file_save_path, get_current_date())
         if not os.path.exists(file_path):
             os.makedirs(file_path)
 
-        filename = os.path.join(file_path, f"{get_current_datetime()}.jpg")
-
-        with Picamera2() as picam2:
-        
-            #picam2 = Picamera2()
-            config = picam2.create_still_configuration()
-            picam2.configure(config)
-            picam2.start()
-        
-            picam2.capture_file(filename)
-
-            #picam2.stop()
-
-
-
-
+        if picamera2Load:
+            filename = os.path.join(file_path, f"{get_current_datetime()}.jpg")
+            with Picamera2() as picam2:
+                config = picam2.create_still_configuration()
+                picam2.configure(config)
+                picam2.start()
+                picam2.capture_file(filename)
