@@ -6,13 +6,19 @@ from sneakydog_raspberrypi_demo import scheduler
 from sneakydog_raspberrypi_demo.util import get_current_date
 from sneakydog_raspberrypi_demo.util import get_current_datetime
 
-picamera2Load = True
 
 try:
     from picamera2 import Picamera2  # type: ignore
+
+    picamera2Load = True
 except:  # noqa E722
-    picamera2Load = False
     print("picamera2 import fail")
+
+
+def task1() -> None:
+    """make video"""
+    print("0 31 23 * * ? *")
+    print("use ffmpeg")
 
 
 def task2() -> None:

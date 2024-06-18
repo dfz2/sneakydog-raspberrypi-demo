@@ -1,13 +1,19 @@
 from datetime import datetime
 
 
-YYYYMMDD = r"%Y%m%d"
-YYYYMMDDHHMMSS = r"%Y%m%d%H%M%S"
-
-
 def get_current_date() -> str:
-    return datetime.now().strftime(YYYYMMDD)
+    """get_current_date
+
+    Returns:
+        str: _description_
+    """
+    return datetime.now().strftime(r"%Y%m%d")
 
 
-def get_current_datetime():
-    return datetime.now().strftime(YYYYMMDDHHMMSS)
+def get_current_datetime() -> str:
+    """get_current_datetime
+
+    Returns:
+        str: _description_
+    """
+    return datetime.now().strftime(r"%Y%m%d%H%M%S")

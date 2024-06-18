@@ -1,5 +1,7 @@
 """App configuration."""
 
+from apscheduler.triggers.cron import CronTrigger
+
 
 class Config:
     """Prod config."""
@@ -14,11 +16,20 @@ class DevelopmentConfig(Config):
 
     FILE_SAVE_PATH = "/DATA/Gallery"
     DEBUG = False
+    SCHEDULER_TIMEZONE = "Asia/Shanghai"
+
     JOBS = [
+        {
+            "id": "job2222",
+            "func": "sneakydog_raspberrypi_demo.tasks:task1",
+            "trigger": "cron",
+            "minute": 35,
+            "hour": 22,
+        },
         {
             "id": "job1111",
             "func": "sneakydog_raspberrypi_demo.tasks:task2",
             "trigger": "interval",
-            "seconds": 2,
-        }
+            "minutes": 30,
+        },
     ]
