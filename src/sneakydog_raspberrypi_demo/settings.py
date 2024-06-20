@@ -1,7 +1,5 @@
 """App configuration."""
 
-from apscheduler.triggers.cron import CronTrigger
-
 
 class Config:
     """Prod config."""
