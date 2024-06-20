@@ -24,7 +24,7 @@ class DevelopmentConfig(Config):
             "func": "sneakydog_raspberrypi_demo.tasks:task1",
             "trigger": "cron",
             "minute": 35,
-            "hour": 22,
+            "hour": 23,
         },
         {
             "id": "job1111",
