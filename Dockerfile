@@ -1,10 +1,13 @@
 FROM python:3.12-slim-bullseye
 
-RUN apt install -y python3-picamera2 --no-install-recommends
-
 WORKDIR /user/src/app
 
 COPY . .
+
+
+RUN apt update && apt-get install wget -y && p raspi.list /etc/apt/sources.list.d && wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key && apt-key add raspberrypi.gpg.key && apt update -y
+
+RUN apt install -y python3-picamera2 --no-install-recommends
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install build && python -m build
