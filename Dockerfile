@@ -1,17 +1,18 @@
-FROM python:slim
+FROM python:3.12-slim-bullseye
 
-WORKDIR /usr/src/app
+RUN apt install -y python3-picamera2 --no-install-recommends
+
+WORKDIR /user/src/app
 
 COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install build
-RUN python -m build
+RUN pip install build && python -m build
 RUN pip install ./dist/*.whl
 
 EXPOSE 5000
 
-ENV FLASK_HOST=0.0.0.0
+ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_DEBUG=0
 ENV FLASK_APP=sneakydog_raspberrypi_demo
 
