@@ -1,13 +1,22 @@
-FROM python:3.12-slim-bullseye
+FROM balenalib/raspberry-pi-debian-python
 
 WORKDIR /user/src/app
 
 COPY . .
 
+RUN echo python --version
 
-RUN apt update && apt-get install wget -y && p raspi.list /etc/apt/sources.list.d && wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key && apt-key add raspberrypi.gpg.key && apt update -y
+RUN apt update && apt-get install wget gnupg -y 
+RUN cp raspi.list /etc/apt/sources.list.d 
+RUN wget -O raspi.key https://archive.raspberrypi.com/debian/raspberrypi.gpg.key
+RUN apt-key add raspi.key 
+RUN apt update
 
-RUN apt install -y python3-picamera2 --no-install-recommends
+RUN apt install -y python3-libcamera python3-kms++
+RUN apt install -y python3-prctl libatlas-base-dev ffmpeg libopenjp2-7
+RUN pip install numpy --upgrade
+RUN pip install picamera2
+
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install build && python -m build
