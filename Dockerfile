@@ -9,19 +9,20 @@ ENV PATH /usr/local/bin:$PATH
 # https://github.com/docker-library/python/pull/570
 ENV LANG C.UTF-8
 
-RUN groupadd -r appuser && useradd -r -g appuser appuser && \
-    mkdir /src && \
-    chown -R appuser:appuser /user/src/app
+RUN adduser -D nonroot
+RUN mkdir /home/app/ && chown -R nonroot:nonroot /home/app
 
-USER appuser
 
-WORKDIR /user/src/app
+WORKDIR /home/app
 
-COPY . .
+USER nonroot
+
+COPY --chown=nonroot:nonroot . .
+
 
 RUN echo python --version
 
-RUN sudo apt update && sudo apt-get install wget gnupg -y 
+RUN apt update && apt-get install wget gnupg -y 
 RUN cp raspi.list /etc/apt/sources.list.d 
 RUN wget -O raspi.key https://archive.raspberrypi.com/debian/raspberrypi.gpg.key
 RUN apt-key add raspi.key 
