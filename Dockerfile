@@ -1,4 +1,16 @@
-FROM balenalib/raspberry-pi-debian-python
+
+FROM debian:bookworm-slim
+
+# ensure local python is preferred over distribution python
+ENV PATH /usr/local/bin:$PATH
+
+# cannot remove LANG even though https://bugs.python.org/issue19846 is fixed
+# last attempted removal of LANG broke many users:
+# https://github.com/docker-library/python/pull/570
+ENV LANG C.UTF-8
+
+RUN adduser -D appuser
+USER appuser
 
 WORKDIR /user/src/app
 
@@ -6,7 +18,7 @@ COPY . .
 
 RUN echo python --version
 
-RUN apt update && apt-get install wget gnupg -y 
+RUN sudo apt update && sudo apt-get install wget gnupg -y 
 RUN cp raspi.list /etc/apt/sources.list.d 
 RUN wget -O raspi.key https://archive.raspberrypi.com/debian/raspberrypi.gpg.key
 RUN apt-key add raspi.key 
