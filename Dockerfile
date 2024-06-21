@@ -9,7 +9,10 @@ ENV PATH /usr/local/bin:$PATH
 # https://github.com/docker-library/python/pull/570
 ENV LANG C.UTF-8
 
-RUN adduser -D appuser
+RUN groupadd -r appuser && useradd -r -g appuser appuser && \
+    mkdir /src && \
+    chown -R appuser:appuser /user/src/app
+
 USER appuser
 
 WORKDIR /user/src/app
