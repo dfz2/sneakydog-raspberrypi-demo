@@ -1,12 +1,14 @@
 FROM python:3.12-slim-bullseye
 
 
-RUN apt install wget -y
-RUN wget -o temp.key http://archive.raspberrypi.com/debian/raspberrypi.gpg.key && apt-key add temp.key
-
-RUN apt update && apt upgrade -y && apt install -y python3-picamera2 --no-install-recommends
 
 WORKDIR /user/src/app
+
+
+RUN apt install wget -y
+RUN wget -o temp.key http://archive.raspberrypi.com/debian/raspberrypi.gpg.key && apt-key add temp.key
+COPY raspi.list /etc/apt/sources.list.d
+RUN apt update && apt upgrade -y && apt install -y python3-picamera2 --no-install-recommends
 
 COPY . .
 
