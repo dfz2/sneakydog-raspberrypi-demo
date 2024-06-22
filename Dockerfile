@@ -1,38 +1,10 @@
+FROM python:3.12-slim-bullseye
 
-FROM debian:bookworm-slim
+RUN apt install -y python3-picamera2 --no-install-recommends
 
-# ensure local python is preferred over distribution python
-ENV PATH /usr/local/bin:$PATH
+WORKDIR /user/src/app
 
-# cannot remove LANG even though https://bugs.python.org/issue19846 is fixed
-# last attempted removal of LANG broke many users:
-# https://github.com/docker-library/python/pull/570
-ENV LANG C.UTF-8
-
-RUN adduser -D nonroot
-RUN mkdir /home/app/ && chown -R nonroot:nonroot /home/app
-
-
-WORKDIR /home/app
-
-USER nonroot
-
-COPY --chown=nonroot:nonroot . .
-
-
-RUN echo python --version
-
-RUN apt update && apt-get install wget gnupg -y 
-RUN cp raspi.list /etc/apt/sources.list.d 
-RUN wget -O raspi.key https://archive.raspberrypi.com/debian/raspberrypi.gpg.key
-RUN apt-key add raspi.key 
-RUN apt update
-
-RUN apt install -y python3-libcamera python3-kms++
-RUN apt install -y python3-prctl libatlas-base-dev ffmpeg libopenjp2-7
-RUN pip install numpy --upgrade
-RUN pip install picamera2
-
+COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install build && python -m build
