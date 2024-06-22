@@ -27,4 +27,8 @@ python -m venv --system-site-packages .venv
 source .venv/bin/activate
 
 
+cp sneakydog-raspberrypi-demo.service  /etc/systemd/system/sneakydog-raspberrypi-demo.service
+
 ```
+
+
