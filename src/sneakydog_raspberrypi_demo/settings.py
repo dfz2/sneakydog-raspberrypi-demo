@@ -28,6 +28,6 @@ class DevelopmentConfig(Config):
             "id": "job1111",
             "func": "sneakydog_raspberrypi_demo.tasks:task2",
             "trigger": "interval",
-            "minutes": 30,
+            "minutes": 2,
         },
     ]
