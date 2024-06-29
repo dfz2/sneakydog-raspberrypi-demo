@@ -15,7 +15,6 @@ RUN apt-get update && apt-get -y upgrade
 
 RUN apt-get update && apt-get -y upgrade \
     && apt-get install -y --no-install-recommends \
-    python3 \
     python3-pip \
     python3-picamera2 \
     && apt-get clean \
