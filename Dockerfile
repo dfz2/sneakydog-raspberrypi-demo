@@ -35,7 +35,7 @@ COPY ./dist/*.whl .
 # TODO: fix issue with "--break-system-packages" flag
 RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
 # RUN pip install build && python3 -m build
-RUN pip install ./*.whl
+RUN pip install *.whl
 
 ENV FLASK_APP=sneakydog_raspberrypi_demo
 ENV FLASK_RUN_HOST=0.0.0.0
