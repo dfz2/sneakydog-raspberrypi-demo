@@ -1,20 +1,21 @@
 version: "3.8"
 
 services:
-  sneakydog_raspberrypi_demo:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  sneakydog-raspberrypi-demo:
+    image: sneakydogs/sneakydog_raspberrypi_demo:latest
+    container_name: sneakydog-raspberrypi-demo
+    restart: always
+    privileged: true
     volumes:
+      - /DATA/Gallery:/DATA/Gallery
       - /run/udev:/run/udev:ro
     devices:
       - /dev/video0:/dev/video0
+    ports:
+      - "5000:5000"
     environment:
+      - TZ=Asia/Shanghai
       - FLASK_APP=sneakydog_raspberrypi_demo
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5000
       - FLASK_DEBUG=0
-    ports:
-      - "5000:5000"
-    restart: always
-    privileged: true

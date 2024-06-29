@@ -32,3 +32,29 @@ cp sneakydog-raspberrypi-demo.service  /etc/systemd/system/sneakydog-raspberrypi
 ```
 
 
+docker-compose.yaml
+
+```
+version: "3.8"
+
+services:
+  sneakydog_raspberrypi_demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /run/udev:/run/udev:ro
+    devices:
+      - /dev/video0:/dev/video0
+    environment:
+      - FLASK_APP=sneakydog_raspberrypi_demo
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5000
+      - FLASK_DEBUG=0
+    ports:
+      - "5000:5000"
+    restart: always
+    privileged: true
+
+
+```
