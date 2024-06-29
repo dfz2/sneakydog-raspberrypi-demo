@@ -1,8 +1,8 @@
 FROM debian:bookworm
 
-#RUN apt update && apt install -y --no-install-recommends gnupg wget
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
-RUN apt-get update && apt-get install apt-utils -y
+# RUN apt-get update && apt-get install apt-utils -y
 
 COPY raspberrypi-archive-stable.gpg /etc/apt/trusted.gpg.d
 COPY raspi.list /etc/apt/sources.list.d
