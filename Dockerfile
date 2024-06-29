@@ -13,7 +13,8 @@ RUN apt-get update && apt-get -y upgrade
 
 # RUN apt-get update && apt-get -y upgrade
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get -y upgrade \
+    && apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     python3-picamera2 \
@@ -36,7 +37,7 @@ COPY ./dist/*.whl .
 # TODO: fix issue with "--break-system-packages" flag
 RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
 # RUN pip install build && python3 -m build
-RUN pip install *.whl
+RUN pip install *.whl --break-system-packages
 
 ENV FLASK_APP=sneakydog_raspberrypi_demo
 ENV FLASK_RUN_HOST=0.0.0.0
