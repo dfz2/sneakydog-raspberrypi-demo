@@ -6,7 +6,7 @@ FROM debian:bookworm
 
 COPY raspberrypi-archive-stable.gpg /etc/apt/trusted.gpg.d
 COPY raspi.list /etc/apt/sources.list.d
-RUN apt-get update && apt-get -y upgrade
+# RUN apt-get update && apt-get -y upgrade
 # RUN echo "deb http://archive.raspberrypi.com/debian/ bookworm main" > /etc/apt/sources.list.d/raspi.list
 
 #RUN wget -O temp.key http://archive.raspberrypi.com/debian/raspberrypi.gpg.key && apt-key add temp.key && rm temp.key
