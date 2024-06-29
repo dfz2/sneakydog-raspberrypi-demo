@@ -3,4 +3,5 @@ Flask-APScheduler
 python-dotenv
 numpy
 ffmpeg-python
+build
 # picamera2
